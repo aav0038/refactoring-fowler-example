@@ -12,58 +12,24 @@ package ubu.gii.dass.refactoring;
  */
 
 public class Movie {
-	public static final int CHILDRENS = 2;
-	public static final int REGULAR = 0;
-	public static final int NEW_RELEASE = 1;
 
 	private String _title;
-	private int _priceCode;
+	MovieType _type;
 
-	public Movie(String title, int priceCode) {
+	public Movie(String title, MovieType movieType) {
 		_title = title;
-		_priceCode = priceCode;
+		_type = movieType;
 	}
 
-	public int getPriceCode() {
-		return _priceCode;
+	public MovieType getMovieType() {
+		return _type;
 	}
 
-	public void setPriceCode(int arg) {
-		_priceCode = arg;
+	public void setMovieType(MovieType movieType) {
+		_type = movieType;
 	}
 
 	public String getTitle() {
 		return _title;
-	}
-
-	public double getCharge(Rental rental) {
-		double result = 0;
-		// determine amounts for each line
-		switch (rental.getMovie().getPriceCode()) {
-		case Movie.REGULAR:
-			result += 2;
-			if (rental.getDaysRented() > 2)
-				result += (rental.getDaysRented() - 2) * 1.5;
-			break;
-		case Movie.NEW_RELEASE:
-			result += rental.getDaysRented() * 3;
-			break;
-		case Movie.CHILDRENS:
-			result += 1.5;
-			if (rental.getDaysRented() > 3)
-				result += (rental.getDaysRented() - 3) * 1.5;
-			break;
-		}
-		return result;
-	}
-
-	public int getFrequentRenterPoints(Rental rental) {
-		// add frequent renter points
-		int frequentRenterPoints = 1;
-		// add bonus for a two day new release rental
-		if ((rental.getMovie().getPriceCode() == Movie.NEW_RELEASE)
-				&& rental.getDaysRented() > 1)
-			frequentRenterPoints++;
-		return frequentRenterPoints;
 	}
 }

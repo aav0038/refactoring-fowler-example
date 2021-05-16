@@ -23,10 +23,10 @@ public class VideoClubTest {
 	
 	@Before
 	public void setUp() {
-		m11 = new Movie("Sky Captain", 1);
-		m12 = new Movie("Alejandro Magno", 1);
-		m0 = new Movie("Accion Mutante", 0);
-		m2 = new Movie("Hermano Oso", 2);
+		m11 = new Movie("Sky Captain", new NewReleaseType());
+		m12 = new Movie("Alejandro Magno", new NewReleaseType());
+		m0 = new Movie("Accion Mutante", new RegularType());
+		m2 = new Movie("Hermano Oso", new ChildrensType());
 
 		c1 = new Customer("Manuel");
 	}
